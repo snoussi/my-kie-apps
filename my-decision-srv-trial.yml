@@ -1,9 +1,0 @@
-apiVersion: app.kiegroup.org/v2
-kind: KieApp
-metadata:
-  name: my-decision-srv-trial
-spec:
-  environment: rhdm-trial
-  commonConfig:
-    adminUser: dmAdmin
-    adminPassword: dmAdmin
