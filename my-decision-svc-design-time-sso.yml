@@ -1,0 +1,27 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: my-decision-svc-design-time
+spec:
+  environment: rhdm-authoring
+  commonConfig:
+    adminUser: dmAdmin
+    adminPassword: dmAdmin
+  auth:
+    sso:
+      adminPassword: <PASSWORD>
+      adminUser: <USER>
+      realm: dm-realm
+      url: 'https://<SSO_DOMAIN>/auth/'
+      disableSSLCertValidation: true
+      principalAttribute: preferred_username
+  objects:
+    console:
+      ssoClient:
+        name: dc-client
+        secret: <SECRET>
+    servers:
+      - name: my-decision-svc-kieserver
+        ssoClient:
+          name: ks-client
+          secret: <SECRET>
