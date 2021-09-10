@@ -25,5 +25,4 @@ spec:
     processMigration:
       database:
         size: 5Gi
-        storageClassName: gold
         type: postgresql
