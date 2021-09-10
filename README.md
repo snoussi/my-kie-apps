@@ -26,6 +26,22 @@ You will need:
   - Kie Server SSO Client Config:
     ![Kie Server SSO Client config](img/sso-ks-client.png)
 
+### DM Runtime environments
+
+- TO_ADD
+- TO_ADD
+
+## Process Automation Manager KieApps examples
+
 ### PAM Trial environments
 
 - [my-process-svc-trial.yml](my-process-svc-trial.yml)
+
+### PAM Modeling environments
+
+- [my-process-svc-design-time.yml](my-process-svc-design-time.yml)
+
+### PAM Runtime environments
+
+- [my-process-svc-runtime-b2i.yml](my-process-svc-runtime-b2i.yml)
+- [my-process-svc-runtime-b2i-pim.yml](my-process-svc-runtime-b2i-pim.yml)
