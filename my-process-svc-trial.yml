@@ -1,0 +1,9 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: my-process-svc-trial
+spec:
+  environment: rhpam-trial
+  commonConfig:
+    adminUser: pamAdmin
+    adminPassword: pamAdmin

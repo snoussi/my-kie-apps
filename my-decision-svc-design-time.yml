@@ -1,0 +1,9 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: my-decision-svc-design-time
+spec:
+  environment: rhdm-authoring
+  commonConfig:
+    adminUser: dmAdmin
+    adminPassword: dmAdmin

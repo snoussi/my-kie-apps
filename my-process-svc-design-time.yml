@@ -1,0 +1,14 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: my-process-svc-design-time
+spec:
+  environment: rhpam-authoring
+  commonConfig:
+    adminUser: pamAdmin
+    adminPassword: pamAdmin
+  objects:
+    servers:
+      - database:
+          size: 5Gi
+          type: postgresql

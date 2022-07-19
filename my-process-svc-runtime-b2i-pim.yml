@@ -1,0 +1,28 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: my-process-svc-runtime
+spec:
+  environment: rhpam-production-immutable
+  commonConfig:
+    adminUser: pamAdmin
+    adminPassword: pamAdmin
+  objects:
+    servers:
+      - deployments: 1
+        replicas: 1
+        env:
+          - name: KIE_SERVER_CONTAINER_DEPLOYMENT
+            value: 'evaluation_v1.0.0(evaluation)=evaluation:evaluation:1.0.0|evaluation_v2.0.0(evaluation)=evaluation:evaluation:2.0.0'
+          - name: RHPAMCENTR_MAVEN_REPO_URL
+            value: 'http://my-process-svc-trial-rhpamcentr-http-pam-runtime.apps.ocp4.snoussi.xyz/maven2/'
+          - name: RHPAMCENTR_MAVEN_REPO_USERNAME
+            value: pamAdmin
+          - name: RHPAMCENTR_MAVEN_REPO_PASSWORD
+            value: pamAdmin
+          - name: MAVEN_REPOS
+            value: 'RHPAMCENTR'
+    processMigration:
+      database:
+        size: 5Gi
+        type: postgresql

@@ -1,0 +1,37 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: my-process-svc
+spec:
+  environment: rhpam-authoring
+  commonConfig:
+    adminUser: pamAdmin
+    adminPassword: pamAdmin
+  auth:
+    sso:
+      adminPassword: redhat
+      adminUser: ssoAdmin
+      realm: pam-realm
+      url: 'https://sso-sso.apps.ocp4.snoussi.xyz/auth/'
+      disableSSLCertValidation: true
+      principalAttribute: preferred_username
+  objects:
+    console:
+      ssoClient:
+        name: bc-client
+        secret: 07e8d24d-165a-47cf-afae-cb7106a2bd57
+      resources:
+        limits:
+          cpu: "1000m"
+          memory: "2Gi"
+        requests:
+          cpu: "1000m"
+          memory: "2Gi"
+    servers:
+      - name: my-process-svc-kieserver
+        ssoClient:
+          name: ks-client
+          secret: 5484935f-d9f7-47a3-83d6-6ee3e4863b32
+        database:
+          size: 5Gi
+          type: postgresql
