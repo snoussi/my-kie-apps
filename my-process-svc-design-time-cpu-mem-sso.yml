@@ -7,31 +7,35 @@ spec:
   commonConfig:
     adminUser: pamAdmin
     adminPassword: pamAdmin
+  truststore:
+    openshiftCaBundle: true
   auth:
     sso:
-      adminPassword: redhat
-      adminUser: ssoAdmin
+      adminPassword: <PASSWORD>
+      adminUser: <USER>
       realm: pam-realm
-      url: 'https://sso-sso.apps.ocp4.snoussi.xyz/auth/'
+      url: 'https://<SSO_DOMAIN>/auth/'
       disableSSLCertValidation: true
       principalAttribute: preferred_username
   objects:
     console:
+      routeHostname: business-central.<my-openshift-cluster.mydomain.com>
       ssoClient:
         name: bc-client
-        secret: 07e8d24d-165a-47cf-afae-cb7106a2bd57
+        secret: bc-client-secret
       resources:
         limits:
-          cpu: "1000m"
-          memory: "2Gi"
+          cpu: "4000m"
+          memory: "4Gi"
         requests:
-          cpu: "1000m"
-          memory: "2Gi"
+          cpu: "4000m"
+          memory: "4Gi"
     servers:
       - name: my-process-svc-kieserver
+        routeHostname: kie-server.<my-openshift-cluster.mydomain.com>
         ssoClient:
           name: ks-client
-          secret: 5484935f-d9f7-47a3-83d6-6ee3e4863b32
+          secret: ks-client-secret
         database:
           size: 5Gi
           type: postgresql
